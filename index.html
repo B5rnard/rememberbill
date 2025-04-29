@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RememberBill - No More Bill Stress</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        // Set Barlow as the default sans-serif font
+                        sans: ['Barlow', 'sans-serif'],
+                        // Add Barlow Condensed for headers or special elements
+                        condensed: ['Barlow Condensed', 'sans-serif'],
+                    },
+                    colors: {
+                        // Define custom colors - simplified palette
+                        'rb-primary': '#1D2B5D', // Dark Blue
+                        'rb-accent': '#4A6FFF', // Brighter Royal Blue Accent
+                        'rb-secondary': '#F2C94C', // Yellow Accent
+                        'rb-bg-dark': '#1D2B5D',
+                        'rb-bg-light': '#F7F9FC', // Very light background
+                        'rb-text-primary': '#1D2B5D',
+                        'rb-text-secondary': '#3B4364',
+                        'rb-text-light': '#FFFFFF',
+                        'rb-success': '#34D399', // Green
+                        'rb-border': '#DDE3F0', // Border color
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 10px rgba(29, 43, 93, 0.08)',
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Simple style for sticky CTA */
+        .sticky-cta {
+            transform: translateY(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .sticky-cta.visible {
+            transform: translateY(0);
+        }
+        /* Accessibility focus states */
+        *:focus-visible {
+            outline: 2px solid #4A6FFF;
+            outline-offset: 2px;
+        }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+            opacity: 0;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+    </style>
+</head>
+<body class="font-sans bg-white text-rb-text-secondary antialiased text-base leading-relaxed">
+
+<!-- Enhanced Header with Improved Navigation -->
+<header class="bg-[#06112A]/90 backdrop-blur-lg py-4 sticky top-0 z-50 border-b border-[#172E5E]/40 shadow-lg">
+    <div class="container mx-auto px-4">
+        <div class="flex justify-between items-center">
+            <!-- Logo and Brand -->
+            <a href="#" class="group flex items-center gap-3 transition-all duration-300">
+                <div class="bg-[#172E5E] text-white w-10 h-10 rounded-full flex items-center justify-center shadow-md group-hover:shadow-[#FAE302]/30 group-hover:shadow-lg transition-all duration-300">
+                    <img src="images/rb-logo.png" alt="RememberBill Logo" class="w-6 h-6">
+                </div>
+                <div class="flex flex-col">
+                    <span class="text-white font-medium text-lg">RememberBill</span>
+                    <span class="text-[#AEBCF2] text-xs">Bill tracking that just works</span>
+                </div>
+            </a>
+            
+            <!-- Navigation -->
+            <nav class="hidden md:flex items-center gap-8">
+                <a href="#features" class="text-[#AEBCF2] hover:text-white font-medium transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#FAE302] hover:after:w-full after:transition-all after:duration-300">
+                    Features
+                </a>
+                <a href="#benefits" class="text-[#AEBCF2] hover:text-white font-medium transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#FAE302] hover:after:w-full after:transition-all after:duration-300">
+                    Who Benefits
+                </a>
+                <a href="#privacy" class="text-[#AEBCF2] hover:text-white font-medium transition-all duration-200 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-[#FAE302] hover:after:w-full after:transition-all after:duration-300">
+                    Privacy
+                </a>
+            </nav>
+            
+            <!-- CTA Button -->
+            <a href="https://chrome.google.com/webstore/category/extensions" target="_blank" rel="noopener noreferrer" class="hidden md:flex items-center gap-2 px-4 py-2 bg-[#FAE302] hover:bg-[#CEB801] text-[#06112A] font-bold rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-4 h-4">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Add to Chrome
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-white focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</header>
+
+<!-- Enhanced Hero Section with Advanced Effects -->
+<section class="relative bg-gradient-to-br from-[#06112A] via-[#172E5E] to-[#2B4D97] text-white pt-20 pb-24 overflow-hidden">
+    <!-- Background decorative elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <!-- Gradient orbs -->
+        <div class="absolute top-20 left-[5%] w-72 h-72 bg-[#406FD4] opacity-20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-[5%] w-80 h-80 bg-[#FAE302] opacity-10 rounded-full blur-3xl"></div>
+        
+        <!-- Animated particles -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-20">
+            <div class="absolute top-[20%] left-[10%] w-2 h-2 bg-[#FAE302] rounded-full animate-ping" style="animation-duration: 3s; animation-delay: 0.5s;"></div>
+            <div class="absolute top-[30%] left-[50%] w-2 h-2 bg-[#FAE302] rounded-full animate-ping" style="animation-duration: 4s; animation-delay: 1s;"></div>
+            <div class="absolute top-[70%] left-[30%] w-2 h-2 bg-[#FAE302] rounded-full animate-ping" style="animation-duration: 3.5s; animation-delay: 1.5s;"></div>
+            <div class="absolute top-[60%] left-[80%] w-2 h-2 bg-[#FAE302] rounded-full animate-ping" style="animation-duration: 4.5s; animation-delay: 0.2s;"></div>
+        </div>
+        
+        <!-- Grid lines -->
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0wIDYwaDYwVjBoLTYweiIvPjxwYXRoIGQ9Ik02MCAwdjYwSDBWMCIgc3Ryb2tlPSIjMjkzQjY4IiBzdHJva2Utd2lkdGg9Ii41Ii8+PC9nPjwvc3ZnPg==')] opacity-10"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left side content -->
+            <div class="text-center md:text-left fade-in">
+                <!-- Pill badge -->
+                <div class="inline-block mb-6 px-4 py-1.5 bg-[#FAE302]/20 text-[#FAE302] rounded-full text-sm font-medium">
+                    Peace of mind for your bills
+                </div>
+                
+                <h1 class="font-condensed text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 tracking-tight">
+                    No More Late Fees.
+                    <span class="relative">
+                        <span class="relative z-10">No More Bill Stress.</span>
+                        <span class="absolute bottom-2 left-0 w-full h-3 bg-[#FAE302]/20 -z-0"></span>
+                    </span>
+                </h1>
+                
+                <p class="text-lg text-[#AEBCF2] mb-8 max-w-lg mx-auto md:mx-0 leading-relaxed">
+                    Get smart reminders exactly when you need them. See everything that's paid—and <em class="text-white font-medium">what's coming up next</em>.
+                </p>
+                
+                <!-- CTA Button Group -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start mb-8">
+                    <a href="https://chrome.google.com/webstore/category/extensions" target="_blank" rel="noopener noreferrer" 
+                       class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#FAE302] hover:bg-[#CEB801] text-[#06112A] font-bold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl text-base tracking-wide group relative overflow-hidden">
+                        <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-[#FAE302] via-[#CEB801] to-[#FAE302] bg-[length:200%_100%] animate-shimmer-slow"></span>
+                        
+                        <span class="relative flex items-center gap-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Add to Chrome - It's Free
+                        </span>
+                    </a>
+                    
+                    <a href="#how-it-works" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent text-white border border-white/30 hover:bg-white/10 rounded-full transition-all duration-300 text-base group">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                        </svg>
+                        See How It Works
+                    </a>
+                </div>
+                
+                <!-- Trust Indicators -->
+                <div class="flex flex-col sm:flex-row gap-6 justify-center md:justify-start text-sm">
+
+                    
+                    <div class="flex items-center gap-2">
+                        <div class="bg-[#FAE302]/20 p-1 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-[#FAE302]">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <span class="text-white">No sign-up required</span>
+                    </div>
+                    
+                    <div class="flex items-center gap-2">
+                        <div class="bg-[#FAE302]/20 p-1 rounded-full">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-4 h-4 text-[#FAE302]">
+                                <path fill-rule="evenodd" d="M10 18a8 8 0 1 0 0-16 8 8 0 0 0 0 16Zm3.857-9.809a.75.75 0 0 0-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 1 0-1.06 1.061l2.5 2.5a.75.75 0 0 0 1.137-.089l4-5.5Z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <span class="text-white">Privacy focused</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right side - Improved App Interface from paste-2.txt -->
+            <div class="relative fade-in" style="animation-delay: 0.2s;">
+                <!-- Background glow effect -->
+                <div class="absolute inset-0 bg-[#FAE302] blur-2xl opacity-10 rounded-full transform scale-75 translate-x-10 translate-y-10"></div>
+                
+                <!-- Browser-style window with product preview -->
+                <div class="relative z-10">
+                    <!-- Browser window frame -->
+                    <div class="bg-[#172E5E] rounded-t-xl p-3 border-b border-[#06112A]/30 flex items-center">
+                        <div class="flex space-x-2 mr-4">
+                            <div class="w-3 h-3 bg-[#FF6050] rounded-full"></div>
+                            <div class="w-3 h-3 bg-[#FAE302] rounded-full"></div>
+                            <div class="w-3 h-3 bg-[#71A398] rounded-full"></div>
+                        </div>
+                        <div class="flex-1 bg-[#0A1B3D] rounded-md h-6 mx-4 flex items-center px-3">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3 h-3 text-[#AEBCF2]">
+                                    <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-xs text-[#AEBCF2] truncate">rememberbill.co</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Actual product preview -->
+                    <div class="bg-white rounded-b-xl shadow-2xl overflow-hidden relative transform hover:-translate-y-1 transition-all duration-700 ease-in-out">
+                        <!-- Replace with your actual product screenshot -->
+                        <img src="images/preview.png" alt="RememberBill App Interface" class="w-full h-auto display-block">
+                    </div>
+                </div>
+                
+                <!-- Floating notification 1 -->
+                <div class="absolute -top-6 -right-8 bg-white p-4 rounded-lg shadow-lg transform rotate-6 animate-float" style="animation-delay: 0.5s;">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-[#FAE302] rounded-full p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-[#06112A]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-[#172E5E] font-semibold text-sm">Rent payment due</div>
+                            <div class="text-[#686868] text-xs">3 days from now</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Floating notification 2 (New from paste-2.txt) -->
+                <div class="absolute -bottom-4 -left-10 bg-white p-4 rounded-lg shadow-lg transform -rotate-3 animate-float" style="animation-duration: 7s; animation-delay: 1s;">
+                    <div class="flex items-center gap-3">
+                        <div class="bg-[#BAF3E7] rounded-full p-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-[#06112A]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="text-[#172E5E] font-semibold text-sm">Water bill paid</div>
+                            <div class="text-[#686868] text-xs">Just now</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CSS Animations -->
+<style>
+@keyframes float {
+  0% {
+    transform: translateY(0px) rotate(6deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(6deg);
+  }
+  100% {
+    transform: translateY(0px) rotate(6deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes shimmer-slow {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-shimmer-slow {
+  animation: shimmer-slow 3s infinite alternate;
+}
+
+/* Additional animation for fade-in effect */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+</style>
+
+<!-- More engaging features section with visual workflow -->
+<!-- Improved Features Section with Cleaner Layout -->
+<!-- Clean Features Section Without Icons -->
+<section id="features" class="py-16 bg-[#1D2B5D] text-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12 fade-in">
+            <h2 class="font-condensed text-3xl md:text-4xl font-bold mb-3 tracking-tight">Bill tracking that <em class="text-yellow-300">just works</em>.</h2>
+            <p class="text-lg text-white/80 max-w-2xl mx-auto">Stop juggling spreadsheets and mental notes. RememberBill simplifies everything.</p>
+        </div>
+        
+        <!-- Journey visualization with connected steps -->
+        <div class="relative max-w-5xl mx-auto">
+            <!-- Connection lines - horizontal line connecting all cards -->
+            <div class="hidden md:block absolute top-1/2 left-[15%] w-[70%] h-0.5 bg-yellow-300"></div>
+            
+            <!-- Feature cards in a clean layout -->
+            <div class="flex flex-col md:flex-row justify-between gap-8 relative z-10">
+                <!-- First card -->
+                <div class="bg-white rounded-lg shadow-lg transform transition-all duration-300 hover:-translate-y-2 flex-1 overflow-hidden">
+                    <!-- Number indicator -->
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center shadow-lg text-[#1D2B5D] font-bold">1</div>
+                    
+                    <div class="p-8 pt-10 text-[#1D2B5D]">
+                        <h3 class="font-condensed text-xl font-bold mb-3">Timely Reminders</h3>
+                        <p class="text-gray-700">Choose your nudge: 1, 3, 5, or 14 days before due. We alert you just in time, so you can <em class="font-medium">relax</em>.</p>
+                    </div>
+                </div>
+                
+                <!-- Second card -->
+                <div class="bg-white rounded-lg shadow-lg transform transition-all duration-300 hover:-translate-y-2 flex-1 overflow-hidden">
+                    <!-- Number indicator -->
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center shadow-lg text-[#1D2B5D] font-bold">2</div>
+                    
+                    <div class="p-8 pt-10 text-[#1D2B5D]">
+                        <h3 class="font-condensed text-xl font-bold mb-3">Unified Dashboard</h3>
+                        <p class="text-gray-700">See paid, pending, and overdue bills at a glance. Color-coded for instant clarity, no digging required.</p>
+                    </div>
+                </div>
+                
+                <!-- Third card -->
+                <div class="bg-white rounded-lg shadow-lg transform transition-all duration-300 hover:-translate-y-2 flex-1 overflow-hidden">
+                    <!-- Number indicator -->
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center shadow-lg text-[#1D2B5D] font-bold">3</div>
+                    
+                    <div class="p-8 pt-10 text-[#1D2B5D]">
+                        <h3 class="font-condensed text-xl font-bold mb-3">Recurring Tracking</h3>
+                        <p class="text-gray-700">Rent, subscriptions, loans? Set them up once. We keep track, you just mark them as paid.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom arrow pointing to result -->
+            <div class="hidden md:flex justify-center mt-12">
+                <div class="w-12 h-12 bg-yellow-300 rounded-full flex items-center justify-center animate-bounce">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#1D2B5D]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Result statement -->
+            <div class="bg-yellow-300 text-[#1D2B5D] p-6 rounded-lg mt-8 text-center max-w-2xl mx-auto">
+                <p class="font-condensed text-xl font-bold">Bills paid on time, every time. No stress, no missed payments.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Enhanced Video Demo Section -->
+<section class="py-20 bg-gradient-to-b from-white to-[#E1E5FA] relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none opacity-50">
+        <div class="absolute top-20 right-10 w-64 h-64 border-2 border-[#FAE302]/20 rounded-full"></div>
+        <div class="absolute bottom-10 left-20 w-48 h-48 border-2 border-[#406FD4]/20 rounded-full"></div>
+    </div>
+
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="text-center mb-12 fade-in">
+            <h2 class="font-condensed text-3xl md:text-4xl font-bold text-[#172E5E] mb-3 tracking-tight">See RememberBill in Action</h2>
+            <p class="text-lg text-[#2B4D97] max-w-2xl mx-auto">A quick look at how <em class="font-medium">simple</em> bill management can be.</p>
+        </div>
+        
+        <!-- Video Container -->
+        <div class="max-w-4xl mx-auto fade-in" style="animation-delay: 0.1s;">
+            <div class="relative bg-white rounded-xl shadow-xl border border-[#EEEEEE] overflow-hidden transform transition-all duration-300 hover:shadow-2xl">
+                <!-- Video top bar -->
+                <div class="bg-[#172E5E] p-3 flex items-center">
+                    <div class="flex space-x-2">
+                        <div class="w-3 h-3 bg-[#FF6050] rounded-full"></div>
+                        <div class="w-3 h-3 bg-[#FAE302] rounded-full"></div>
+                        <div class="w-3 h-3 bg-[#71A398] rounded-full"></div>
+                    </div>
+                    <div class="ml-4 text-white/70 text-sm">RememberBill Demo Video</div>
+                </div>
+                
+                <!-- Actual YouTube Embed -->
+                <div class="relative aspect-video bg-[#0A1B3D] overflow-hidden">
+                    <iframe class="w-full h-full absolute inset-0" 
+                        src="https://www.youtube.com/watch?v=HjhF-4fswnw" 
+                        title="RememberBill Demo" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+                
+                <!-- Video Caption -->
+                <div class="p-4 text-center bg-white">
+                    <p class="text-[#172E5E] text-sm">See how RememberBill can transform your bill management experience in just 90 seconds.</p>
+                </div>
+            </div>
+            
+            <!-- Video features bullets -->
+            <div class="mt-8 grid md:grid-cols-3 gap-4 text-center max-w-3xl mx-auto">
+                <div class="bg-white/80 backdrop-blur-sm p-3 rounded-lg shadow-sm">
+                    <span class="text-[#172E5E] font-medium">Quick & intuitive setup</span>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm p-3 rounded-lg shadow-sm">
+                    <span class="text-[#172E5E] font-medium">Smart reminder system</span>
+                </div>
+                <div class="bg-white/80 backdrop-blur-sm p-3 rounded-lg shadow-sm">
+                    <span class="text-[#172E5E] font-medium">Easy tracking & organization</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- CTA Button -->
+        <div class="text-center mt-12">
+            <a href="https://chrome.google.com/webstore/category/extensions" target="_blank" rel="noopener noreferrer" 
+               class="inline-flex items-center gap-2 px-6 py-3 bg-[#FAE302] hover:bg-[#CEB801] text-[#06112A] font-bold rounded-full transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                Try It For Yourself — It's Free
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Comparison Section with Visual Elements -->
+<section class="py-20 bg-[#E1E5FA] relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute -top-20 -right-20 w-64 h-64 bg-[#AEBCF2] opacity-30 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-32 -left-20 w-80 h-80 bg-[#FAE302] opacity-10 rounded-full blur-3xl"></div>
+    
+    <!-- Diagonal dividing line -->
+    <div class="absolute top-0 bottom-0 left-1/2 w-px bg-gradient-to-b from-transparent via-[#172E5E]/20 to-transparent hidden lg:block"></div>
+    
+    <div class="container mx-auto px-4 relative z-10">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- Left side - Content -->
+            <div class="order-2 md:order-1 fade-in">
+                <!-- Section label -->
+                <div class="inline-block px-3 py-1 bg-[#172E5E] text-white text-xs font-medium rounded-full uppercase tracking-wider mb-6">
+                    The better approach
+                </div>
+                
+                <h2 class="font-condensed text-3xl md:text-4xl font-bold text-[#172E5E] mb-5 tracking-tight">
+                    Why not just use a calendar?
+                </h2>
+                
+                <p class="text-lg text-[#2B4D97] mb-8">
+                    Because RememberBill is <em class="font-medium">laser-focused</em> on one thing: making sure you never miss a bill payment. It's designed for clarity, not clutter.
+                </p>
+                
+                <!-- Enhanced feature list -->
+                <div class="space-y-6">
+                    <!-- Item 1 -->
+                    <div class="bg-white p-5 rounded-lg shadow-md border border-[#EEEEEE] transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        <div class="flex gap-4">
+                            <div class="bg-[#FAE302]/20 p-3 rounded-full flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#172E5E]">
+                                    <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h12a3 3 0 013 3v12a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm4.5 7.5a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0v-2.25a.75.75 0 01.75-.75zm3.75-1.5a.75.75 0 00-1.5 0v4.5a.75.75 0 001.5 0V12zm2.25-3a.75.75 0 01.75.75v6.75a.75.75 0 01-1.5 0V9.75A.75.75 0 0113.5 9zm3.75-1.5a.75.75 0 00-1.5 0v9a.75.75 0 001.5 0v-9z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-[#172E5E] mb-2">Purpose-Built</h3>
+                                <p class="text-[#484848]">Dedicated bill tracking, not a bloated calendar or budgeting app. We do one thing exceptionally well.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="bg-white p-5 rounded-lg shadow-md border border-[#EEEEEE] transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        <div class="flex gap-4">
+                            <div class="bg-[#BAF3E7]/30 p-3 rounded-full flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#172E5E]">
+                                    <path fill-rule="evenodd" d="M12 5.25c1.213 0 2.415.046 3.605.135a3.256 3.256 0 013.01 3.01c.044.583.077 1.17.1 1.759L17.03 8.47a.75.75 0 10-1.06 1.06l3 3a.75.75 0 001.06 0l3-3a.75.75 0 00-1.06-1.06l-1.752 1.751c-.023-.65-.06-1.296-.108-1.939a4.756 4.756 0 00-4.392-4.392 49.422 49.422 0 00-7.436 0A4.756 4.756 0 003.89 8.282c-.017.224-.033.447-.046.672a.75.75 0 101.497.092c.013-.217.028-.434.044-.651a3.256 3.256 0 013.01-3.01c1.19-.09 2.392-.135 3.605-.135zm-6.97 6.22a.75.75 0 00-1.06 0l-3 3a.75.75 0 101.06 1.06l1.752-1.751c.023.65.06 1.296.108 1.939a4.756 4.756 0 004.392 4.392 49.413 49.413 0 007.436 0 4.756 4.756 0 004.392-4.392c.017-.223.032-.447.046-.672a.75.75 0 00-1.497-.092c-.013.217-.028.434-.044.651a3.256 3.256 0 01-3.01 3.01 47.953 47.953 0 01-7.21 0 3.256 3.256 0 01-3.01-3.01 47.759 47.759 0 01-.1-1.759L6.97 15.53a.75.75 0 001.06-1.06l-3-3z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-[#172E5E] mb-2">Zero Friction</h3>
+                                <p class="text-[#484848]">No sign-up needed. Install the extension and start tracking instantly. No lengthy onboarding process.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="bg-white p-5 rounded-lg shadow-md border border-[#EEEEEE] transform transition-all duration-300 hover:-translate-y-1 hover:shadow-lg">
+                        <div class="flex gap-4">
+                            <div class="bg-[#FFD7D0]/40 p-3 rounded-full flex-shrink-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-[#172E5E]">
+                                    <path fill-rule="evenodd" d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 6a.75.75 0 00-1.5 0v6c0 .414.336.75.75.75h4.5a.75.75 0 000-1.5h-3.75V6z" clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-[#172E5E] mb-2">Recurring Made Easy</h3>
+                                <p class="text-[#484848]">Handles monthly, quarterly, or annual bills effortlessly. Set it once and forget it—until you need to pay.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right side - Visual Comparison -->
+            <div class="order-1 md:order-2 fade-in" style="animation-delay: 0.1s;">
+                <!-- Comparison Cards -->
+                <div class="relative">
+                    <!-- Calendar Card (pushed back) -->
+                    <div class="absolute -top-4 -left-4 w-full h-full bg-white rounded-xl shadow-md border border-[#DCDCDC] p-6 transform -rotate-6 z-0">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-lg font-bold text-[#686868]">Calendar App</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-[#B5B5B5]">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5m-9-6h.008v.008H12v-.008zM12 15h.008v.008H12V15zm0 2.25h.008v.008H12v-.008zM9.75 15h.008v.008H9.75V15zm0 2.25h.008v.008H9.75v-.008zM7.5 15h.008v.008H7.5V15zm0 2.25h.008v.008H7.5v-.008zm6.75-4.5h.008v.008h-.008v-.008zm0 2.25h.008v.008h-.008V15zm0 2.25h.008v.008h-.008v-.008zm2.25-4.5h.008v.008H16.5v-.008zm0 2.25h.008v.008H16.5V15z" />
+                            </svg>
+                        </div>
+                        
+                        <div class="space-y-2 opacity-60">
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-[#FF6050]">
+                                    <path fill-rule="evenodd" d="M5.965 4.904l9.131 9.131a6.5 6.5 0 00-9.131-9.131zm8.07 10.192L4.904 5.965a6.5 6.5 0 009.131 9.131zM4.343 4.343a8 8 0 1111.314 11.314A8 8 0 014.343 4.343z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-[#686868]">Cluttered with meetings, events</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-[#FF6050]">
+                                    <path fill-rule="evenodd" d="M5.965 4.904l9.131 9.131a6.5 6.5 0 00-9.131-9.131zm8.07 10.192L4.904 5.965a6.5 6.5 0 009.131 9.131zM4.343 4.343a8 8 0 1111.314 11.314A8 8 0 014.343 4.343z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-[#686868]">No specialized bill reminders</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-[#FF6050]">
+                                    <path fill-rule="evenodd" d="M5.965 4.904l9.131 9.131a6.5 6.5 0 00-9.131-9.131zm8.07 10.192L4.904 5.965a6.5 6.5 0 009.131 9.131zM4.343 4.343a8 8 0 1111.314 11.314A8 8 0 014.343 4.343z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-[#686868]">Bills get lost in the noise</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- RememberBill Card (front) - Using real product shot -->
+                    <div class="bg-white rounded-xl shadow-lg border border-[#172E5E]/10 p-6 transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl relative z-10">
+                        <!-- Product Shot Container with shadow and highlights -->
+                        <div class="relative">
+                            <!-- Subtle glow effect behind image -->
+                            <div class="absolute -inset-1 bg-gradient-to-tr from-[#FAE302]/20 to-[#406FD4]/20 rounded-xl blur-sm"></div>
+                            
+                            <!-- Actual Product Screenshot -->
+                            <div class="relative rounded-xl overflow-hidden shadow-lg border border-[#EEEEEE]">
+                                <img src="images/calendar.png" alt="RememberBill App Interface" class="w-full h-auto">
+                            </div>
+                            
+                            <!-- Highlight badge -->
+                            <div class="absolute -top-4 -right-4 bg-[#FAE302] text-[#172E5E] text-xs font-bold py-1 px-3 rounded-full shadow-md transform rotate-3">
+                                Actual app view
+                            </div>
+                        </div>
+                        
+                        <!-- Feature highlights below the product shot -->
+                        <div class="space-y-3 mt-6 bg-[#F6F3F3] p-4 rounded-lg">
+                            <h3 class="font-bold text-[#172E5E] mb-2">Why people love RememberBill:</h3>
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-[#71A398]">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-[#172E5E]">Focused on bills only</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-[#71A398]">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-[#172E5E]">Precise reminders when you need them</span>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 text-[#71A398]">
+                                    <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
+                                </svg>
+                                <span class="text-[#172E5E]">Visual tracking of payment status</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Enhanced "Who Benefits" Section with Brand Colors -->
+    <section class="py-20 bg-[#EDF0FD]">
+        <div class="container mx-auto px-4">
+            <!-- Section heading -->
+            <div class="text-center mb-16">
+                <h2 class="font-condensed text-4xl md:text-5xl font-bold text-[#172E5E] mb-4">Who benefits from RememberBill?</h2>
+                <p class="text-lg text-[#3D3D3D] max-w-2xl mx-auto">If you pay bills, you'll love the peace of mind. <span class="italic">Especially helpful for:</span></p>
+            </div>
+            
+            <div class="max-w-5xl mx-auto">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Freelancer Card -->
+                    <div class="group relative overflow-hidden rounded-lg transition-all duration-300 hover:shadow-xl fade-in">
+                        <!-- Top decorative bar -->
+                        <div class="h-2 bg-[#FAE302] w-full"></div>
+                        
+                        <!-- Card Content -->
+                        <div class="bg-white p-6 flex flex-col items-center text-center">
+                            <!-- Icon with animated background on hover -->
+                            <div class="relative z-10 mb-6">
+                                <div class="absolute inset-0 bg-[#172E5E] rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                                <div class="bg-[#406FD4] text-white w-16 h-16 rounded-full flex items-center justify-center relative z-20 transform group-hover:rotate-12 transition-all duration-300">
+                                    <!-- Custom icon image instead of SVG -->
+                                    <img src="images/laptop.png" alt="Freelancer Icon" class="w-8 h-8">
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-[#172E5E] mb-4">Busy Freelancers</h3>
+                            
+                            <!-- Testimonial with quote styling -->
+                            <div class="relative">
+                                <div class="absolute -top-3 -left-2 text-4xl text-[#FAE302] opacity-50">"</div>
+                                <p class="text-[#3D3D3D] pt-2 mb-6">Juggling invoices and subscriptions was chaotic. Now it's all in one place, clear as day.</p>
+                                <div class="absolute -bottom-4 -right-2 text-4xl text-[#FAE302] opacity-50">"</div>
+                            </div>
+                            
+                            <!-- User avatar -->
+                            <div class="mt-4 flex items-center justify-center">
+                                <div class="w-8 h-8 bg-[#AEBCF2] rounded-full flex items-center justify-center text-[#172E5E] text-xs font-bold">JM</div>
+                                <span class="ml-2 text-sm text-[#686868]">James M., Designer</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Households Card -->
+                    <div class="group relative overflow-hidden rounded-lg transition-all duration-300 hover:shadow-xl fade-in" style="animation-delay: 0.1s;">
+                        <!-- Top decorative bar -->
+                        <div class="h-2 bg-[#BAF3E7] w-full"></div>
+                        
+                        <!-- Card Content -->
+                        <div class="bg-white p-6 flex flex-col items-center text-center">
+                            <!-- Icon with animated background on hover -->
+                            <div class="relative z-10 mb-6">
+                                <div class="absolute inset-0 bg-[#172E5E] rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                                <div class="bg-[#406FD4] text-white w-16 h-16 rounded-full flex items-center justify-center relative z-20 transform group-hover:rotate-12 transition-all duration-300">
+                                    <!-- Custom icon image instead of SVG -->
+                                    <img src="images/family.png" alt="Household Icon" class="w-8 h-8">
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-[#172E5E] mb-4">Households & Families</h3>
+                            
+                            <!-- Testimonial with quote styling -->
+                            <div class="relative">
+                                <div class="absolute -top-3 -left-2 text-4xl text-[#BAF3E7] opacity-50">"</div>
+                                <p class="text-[#3D3D3D] pt-2 mb-6">Finally, an easy way to track shared expenses without endless reminders or messy spreadsheets.</p>
+                                <div class="absolute -bottom-4 -right-2 text-4xl text-[#BAF3E7] opacity-50">"</div>
+                            </div>
+                            
+                            <!-- User avatar -->
+                            <div class="mt-4 flex items-center justify-center">
+                                <div class="w-8 h-8 bg-[#8ECCBF] rounded-full flex items-center justify-center text-[#172E5E] text-xs font-bold">SL</div>
+                                <span class="ml-2 text-sm text-[#686868]">Sarah L., Parent</span>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <!-- Calm Seekers Card -->
+                    <div class="group relative overflow-hidden rounded-lg transition-all duration-300 hover:shadow-xl fade-in" style="animation-delay: 0.2s;">
+                        <!-- Top decorative bar -->
+                        <div class="h-2 bg-[#FFD7D0] w-full"></div>
+                        
+                        <!-- Card Content -->
+                        <div class="bg-white p-6 flex flex-col items-center text-center">
+                            <!-- Icon with animated background on hover -->
+                            <div class="relative z-10 mb-6">
+                                <div class="absolute inset-0 bg-[#172E5E] rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300"></div>
+                                <div class="bg-[#406FD4] text-white w-16 h-16 rounded-full flex items-center justify-center relative z-20 transform group-hover:rotate-12 transition-all duration-300">
+                                    <!-- Custom icon image instead of SVG -->
+                                    <img src="images/notifications.png" alt="Calm Seeker Icon" class="w-8 h-8">
+                                </div>
+                            </div>
+                            
+                            <h3 class="text-xl font-bold text-[#172E5E] mb-4">Anyone Seeking Calm</h3>
+                            
+                            <!-- Testimonial with quote styling -->
+                            <div class="relative">
+                                <div class="absolute -top-3 -left-2 text-4xl text-[#FFD7D0] opacity-50">"</div>
+                                <p class="text-[#3D3D3D] pt-2 mb-6">The gentle nudges are perfect. Reduces my bill anxiety and helps manage executive function hurdles.</p>
+                                <div class="absolute -bottom-4 -right-2 text-4xl text-[#FFD7D0] opacity-50">"</div>
+                            </div>
+                            
+                            <!-- User avatar -->
+                            <div class="mt-4 flex items-center justify-center">
+                                <div class="w-8 h-8 bg-[#FFAFA3] rounded-full flex items-center justify-center text-[#172E5E] text-xs font-bold">AT</div>
+                                <span class="ml-2 text-sm text-[#686868]">Alex T., Teacher</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="text-center mt-16">
+                <a href="#" class="inline-flex items-center justify-center gap-2 px-8 py-4 bg-[#172E5E] hover:bg-[#0A1B3D] text-white font-bold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl text-base tracking-wide">
+                    Find Your Peace of Mind
+                </a>
+            </div>
+        </div>
+    </section>
+
+<!-- Enhanced Privacy Section with Shield Animation -->
+<section class="py-20 bg-gradient-to-b from-[#E1E5FA] to-white relative overflow-hidden">
+    <!-- Decorative background elements -->
+    <div class="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+        <div class="absolute top-10 left-10 w-32 h-32 border-2 border-[#172E5E] rounded-full"></div>
+        <div class="absolute top-40 right-20 w-48 h-48 border-2 border-[#FAE302] rounded-full"></div>
+        <div class="absolute bottom-20 left-1/4 w-24 h-24 border-2 border-[#BAF3E7] rounded-full"></div>
+    </div>
+
+    <div class="container mx-auto px-4 text-center relative z-10">
+        <div class="max-w-3xl mx-auto fade-in">
+            <!-- Animated Lock Icon -->
+            <div class="relative inline-block mb-8">
+                <div class="absolute inset-0 bg-[#FAE302] rounded-full opacity-20 animate-ping" style="animation-duration: 3s;"></div>
+                <div class="relative bg-[#172E5E] text-white p-5 rounded-full inline-flex items-center justify-center shadow-lg">
+                    <img src="images/eye.png" alt="Icon Description" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                    </svg>
+                </div>
+            </div>
+            
+            <!-- Main Heading -->
+            <h2 class="font-condensed text-3xl md:text-4xl lg:text-5xl font-bold text-[#172E5E] mb-4 tracking-tight">
+                Your Privacy Comes First. <em class="text-[#406FD4]">Always</em><span class="text-[#FAE302]">.</span>
+            </h2>
+            
+            <p class="text-lg text-[#3D3D3D] mb-10">
+                We believe your financial data is yours alone. RememberBill is built on that principle.
+            </p>
+            
+            <!-- Privacy Feature Cards -->
+            <!-- Privacy Feature Cards - Vertical Style -->
+<div class="grid sm:grid-cols-3 gap-8 max-w-5xl mx-auto">
+    <!-- No Sign-Up Card -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Center the icon -->
+        <div class="flex justify-center pt-6">
+            <div class="bg-[#172E5E] w-16 h-16 rounded-lg flex items-center justify-center">
+                <img src="images/lock.png" alt="No Sign-Up Icon" class="w-10 h-10">
+            </div>
+        </div>
+        
+        <!-- Title and description centered -->
+        <div class="p-5 text-center">
+            <h3 class="text-xl font-bold text-[#172E5E] mb-3">No Sign-Up, No Cloud</h3>
+            <p class="text-sm text-[#484848]">No email, no accounts. Your bill information never leaves your device unless you explicitly export it.</p>
+        </div>
+    </div>
+    
+    <!-- Local-First Card -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Center the icon -->
+        <div class="flex justify-center pt-6">
+            <div class="bg-[#172E5E] w-16 h-16 rounded-lg flex items-center justify-center">
+                <img src="images/storage.png" alt="Local-First Icon" class="w-10 h-10">
+            </div>
+        </div>
+        
+        <!-- Title and description centered -->
+        <div class="p-5 text-center">
+            <h3 class="text-xl font-bold text-[#172E5E] mb-3">Local-First Design</h3>
+            <p class="text-sm text-[#484848]">Operates entirely within your browser's secure storage. We don't see your data.</p>
+        </div>
+    </div>
+    
+    <!-- Optional Analytics Card -->
+    <div class="bg-white rounded-lg shadow-md overflow-hidden">
+        <!-- Center the icon -->
+        <div class="flex justify-center pt-6">
+            <div class="bg-[#172E5E] w-16 h-16 rounded-lg flex items-center justify-center">
+                <img src="images/brain.png" alt="Analytics Icon" class="w-10 h-10">
+            </div>
+        </div>
+        
+        <!-- Title and description centered -->
+        <div class="p-5 text-center">
+            <h3 class="text-xl font-bold text-[#172E5E] mb-3">Optional Analytics</h3>
+            <p class="text-sm text-[#484848]">Anonymous usage stats (like button clicks) help us improve. Easily disabled in settings.</p>
+        </div>
+    </div>
+</div>
+            
+            <!-- Shield Badge -->
+            <div class="mt-12 inline-block bg-[#F6F3F3] p-5 rounded-xl shadow-md">
+                <div class="flex items-center gap-3">
+                    <div class="text-[#FAE302] flex">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                        </svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
+                            <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <div class="text-center">
+                        <span class="text-[#172E5E] font-medium">Trusted by 2,400+ users</span>
+                        <div class="text-xs text-[#686868] mt-1">Your data stays where it belongs: with you.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CSS Animations -->
+<style>
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+</style>
+
+<!-- Enhanced CTA Section with Animated Background -->
+<section class="py-20 bg-[#172E5E] text-white relative overflow-hidden">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-0 -left-16 w-48 h-48 bg-[#406FD4] opacity-20 rounded-full blur-2xl"></div>
+        <div class="absolute bottom-0 right-10 w-64 h-64 bg-[#FAE302] opacity-10 rounded-full blur-2xl"></div>
+        <div class="absolute top-1/2 left-1/4 w-32 h-32 bg-[#406FD4] opacity-10 rounded-full blur-xl animate-pulse"></div>
+    </div>
+    
+    <div class="container mx-auto px-4 text-center relative z-10 fade-in">
+        <!-- Highlight icon -->
+        <div class="inline-block mb-6">
+            <div class="relative p-3 bg-[#FAE302] bg-opacity-20 rounded-full">
+                <div class="absolute inset-0 bg-[#FAE302] bg-opacity-30 rounded-full animate-ping" style="animation-duration: 2s;"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-[#FAE302]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+            </div>
+        </div>
+        
+        <h2 class="font-condensed text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 tracking-tight">
+            Ready for bill peace of mind?
+        </h2>
+        
+        <p class="text-lg text-[#AEBCF2] mb-8 max-w-xl mx-auto">
+            Install the free Chrome extension today and say goodbye to late fees and <em class="text-white font-medium">bill stress</em>.
+        </p>
+        
+        <!-- Enhanced CTA Button -->
+        <div class="mb-8">
+            <a href="https://chrome.google.com/webstore/category/extensions" target="_blank" rel="noopener noreferrer" 
+               class="group relative inline-flex items-center gap-2 px-8 py-4 bg-[#FAE302] hover:bg-[#CEB801] text-[#06112A] font-condensed font-bold rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 text-base tracking-wide overflow-hidden">
+                <!-- Button background animation -->
+                <span class="absolute inset-0 w-full h-full bg-gradient-to-r from-[#FAE302] via-[#CEB801] to-[#FAE302] bg-[length:200%_100%] animate-shimmer-slow"></span>
+                
+                <!-- Button content -->
+                <span class="relative flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    Add to Chrome – It's Free
+                </span>
+            </a>
+        </div>
+        
+        <!-- Feature tags -->
+        <div class="flex flex-wrap justify-center gap-4 mb-6">
+            <div class="bg-[#06112A] bg-opacity-50 px-4 py-1.5 rounded-full flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-[#FAE302]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-sm">No sign-up</span>
+            </div>
+            <div class="bg-[#06112A] bg-opacity-50 px-4 py-1.5 rounded-full flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-[#FAE302]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-sm">Instant setup</span>
+            </div>
+            <div class="bg-[#06112A] bg-opacity-50 px-4 py-1.5 rounded-full flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-[#FAE302]">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span class="text-sm">Pure clarity</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Footer with Brand Colors -->
+<footer class="py-8 bg-[#06112A] text-[#AEBCF2]">
+    <div class="container mx-auto px-4">
+        <!-- Top Footer Content -->
+        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-6">
+            <!-- Logo and Tagline -->
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-[#172E5E] rounded-full flex items-center justify-center">
+                    <img src="images/rb-logo.png" alt="RememberBill Logo" class="w-5 h-5">
+                </div>
+                <div class="text-left">
+                    <div class="font-bold text-white">RememberBill</div>
+                    <div class="text-xs text-[#AEBCF2]">Bills tracked, peace maintained</div>
+                </div>
+            </div>
+            
+            <!-- Feedback Button -->
+            <div>
+                <a href="https://forms.gle/your-form-id" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-[#172E5E] hover:bg-[#2B4D97] text-white rounded-md transition-all duration-300">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" />
+                    </svg>
+                    Have feedback? We'd love to hear it!
+                </a>
+            </div>
+        </div>
+        
+        <!-- Footer Divider -->
+        <div class="h-px bg-gradient-to-r from-transparent via-[#AEBCF2] to-transparent opacity-20 my-6"></div>
+        
+        <!-- Bottom Footer -->
+        <div class="flex flex-col md:flex-row justify-between items-center text-sm">
+            <div class="mb-4 md:mb-0 text-center md:text-left">
+                <p class="text-sm">Built with care by folks who also forget bills sometimes.</p>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-center sm:text-left">
+                <span class="text-xs text-[#7894EA]">© 2025 RememberBill</span>
+                
+                <div class="flex gap-6">
+                    <a href="privacy-policy.html" class="text-xs text-[#AEBCF2] hover:text-white transition duration-200 relative group">
+                        Privacy Policy
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FAE302] group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="terms-of-service.html" class="text-xs text-[#AEBCF2] hover:text-white transition duration-200 relative group">
+                        Terms of Service
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FAE302] group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                    <a href="contact.html" class="text-xs text-[#AEBCF2] hover:text-white transition duration-200 relative group">
+                        Contact / Feedback
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FAE302] group-hover:w-full transition-all duration-300"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script>
+        // Show sticky CTA after scrolling down
+        window.addEventListener('scroll', function() {
+            const stickyCta = document.getElementById('stickyCta');
+            if (window.scrollY > window.innerHeight * 0.5) {
+                stickyCta.classList.add('visible');
+            } else {
+                stickyCta.classList.remove('visible');
+            }
+        });
+
+        // Simple Intersection Observer for fade-in animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // trigger when 10% of the element is visible
+        };
+
+        const observerCallback = (entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Start the animation when the element comes into view
+                    entry.target.style.opacity = '1';
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToAnimate = document.querySelectorAll('.fade-in');
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+
+</body>
+</html>
