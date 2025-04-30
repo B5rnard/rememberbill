@@ -119,6 +119,13 @@
         .back-button:hover {
             background-color: #2B4D97;
         }
+        a {
+            color: #406FD4;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -138,16 +145,17 @@
     
     <main>
         <h1>Privacy Policy</h1>
-        <div class="date">Last updated: April 24, 2025</div>
+        <div class="date">Last updated: April 29, 2025</div>
         
-        <p>At RememberBill, we prioritize your privacy above all else. Our approach is simple: <span class="highlight">your data stays on your device</span>. This Privacy Policy explains how the RememberBill Chrome Extension ("RememberBill," "Extension," "we," "our," or "us") handles your information.</p>
+        <p>At RememberBill, we prioritize your privacy above all else. Our approach is simple: your data stays on your device. This Privacy Policy explains how the RememberBill Chrome Extension ("RememberBill," "Extension," "we," "our," or "us") handles your information.</p>
         
         <h2>1. Local-First Philosophy</h2>
         <p>RememberBill is built on a local-first approach to privacy:</p>
         <ul>
-            <li>All your financial information and bill data are stored <strong>exclusively on your device</strong> using your browser's secure local storage.</li>
+            <li>All your financial information and bill data are stored exclusively on your device using your browser's secure local storage.</li>
             <li>No sign-up, account creation, or personal information collection is required to use RememberBill.</li>
             <li>Your data never leaves your device unless you specifically choose to export it.</li>
+            <li>Except for the anonymous analytics traffic described in Section 3 (if you opt in), no bill content or personal information is ever transmitted off your device.</li>
         </ul>
         
         <h2>2. Information We Don't Collect</h2>
@@ -157,65 +165,70 @@
             <li>Financial account information, balances, or transaction details</li>
             <li>Bill amounts, due dates, or payment history</li>
             <li>Browsing history or website activity outside the Extension</li>
-            <li>Location data, IP addresses, or device information</li>
+            <li>Location data, device information, or complete IP addresses</li>
         </ul>
+        <p>RememberBill proxies Google Analytics via Measurement Protocol; we truncate IP addresses before transmission and do not store them at any point.</p>
         
         <h2>3. Optional Analytics</h2>
         <p>To help improve the Extension, we offer an optional analytics program:</p>
         <ul>
-            <li>Analytics are <strong>opt-in</strong> and can be enabled or disabled via the Settings panel at any time.</li>
-            <li>If enabled, we collect <strong>anonymous usage data</strong> through Google Analytics, including:</li>
+            <li>Analytics are strictly opt-in and disabled by default</li>
+            <li>Analytics can be enabled or disabled via the Settings panel at any time</li>
+            <li>If enabled, we collect anonymous usage data through Google Analytics, including:</li>
             <ul style="margin-top: 0.5rem;">
-                <li>Feature usage patterns (which features you use most)</li>
-                <li>Bill counts and basic interaction metrics (without bill details)</li>
-                <li>Extension open frequency and feature engagement</li>
-                <li>General workflow patterns to identify areas for improvement</li>
+                <li>Feature usage patterns (specifically: feature name, timestamp, anonymized user ID)</li>
+                <li>Integer counts only (e.g., "bills_total: 12")</li>
+                <li>Extension open frequency</li>
             </ul>
-            <li>We generate a random anonymous ID for analytics purposes that <strong>cannot be linked to you personally</strong>.</li>
-            <li>We <strong>never</strong> collect bill names, amounts, due dates, or any personal financial details.</li>
-            <li>Analytics data is transmitted securely using HTTPS to our analytics provider.</li>
-            <li>This data helps us understand how people use RememberBill so we can make it better for everyone.</li>
+            <li>We generate a random anonymous ID for analytics purposes that cannot be linked to you personally</li>
+            <li>We never collect bill names, amounts, due dates, or any personal financial details</li>
+            <li>Analytics data is transmitted securely using HTTPS to our analytics provider</li>
         </ul>
+        
+        <p>For more information about how Google processes this data, please see <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
 
-<p>You can view your current analytics preference and change it anytime by:</p>
-<ol>
-    <li>Opening RememberBill</li>
-    <li>Clicking the Settings icon (⚙️) in the top right</li>
-    <li>Going to the "Analytics & Privacy" section</li>
-    <li>Toggling "Allow Anonymous Usage Data" on or off</li>
-</ol>
+        <p>You can view your current analytics preference and change it anytime by:</p>
+        <ol>
+            <li>Opening RememberBill</li>
+            <li>Clicking the Settings icon (⚙️) in the top right</li>
+            <li>Going to the "Analytics & Privacy" section</li>
+            <li>Toggling "Allow Anonymous Usage Data" on or off</li>
+        </ol>
         
         <h2>4. How Your Data Is Stored</h2>
         <p>RememberBill uses your browser's built-in local storage mechanisms:</p>
         <ul>
-            <li>Data is stored using IndexedDB and localStorage, standard browser storage technologies.</li>
-            <li>Your information remains within your browser environment.</li>
-            <li>We recommend creating periodic manual backups of your data through the Export feature.</li>
+            <li>Data is stored using IndexedDB and localStorage, standard browser storage technologies</li>
+            <li>Your information remains within your browser environment</li>
+            <li>Data is stored un-encrypted in Chrome local storage; it is protected by your browser profile and OS login</li>
+            <li>We recommend creating periodic manual backups of your data through the Export feature</li>
         </ul>
         
         <h2>5. Browser Permissions</h2>
         <p>RememberBill requires the following browser permissions:</p>
         <ul>
-            <li><strong>Storage:</strong> To save your bill information locally on your device.</li>
-            <li><strong>Notifications:</strong> To send you bill reminders and alerts.</li>
-            <li><strong>Alarms:</strong> To schedule reminders and check for upcoming bills.</li>
+            <li>Storage: To save your bill information locally on your device</li>
+            <li>Notifications: To send you bill reminders and alerts</li>
+            <li>Alarms: To schedule reminders and check for upcoming bills</li>
         </ul>
         <p>We request only the minimum permissions necessary for functionality.</p>
         
         <h2>6. Data Retention and Deletion</h2>
         <p>Since all data is stored locally:</p>
         <ul>
-            <li>Your data remains on your device until you choose to delete it.</li>
-            <li>Uninstalling the Extension will permanently delete all associated data.</li>
-            <li>You can clear all data through the Extension settings at any time.</li>
+            <li>Your data remains on your device until you choose to delete it</li>
+            <li>Uninstalling the Extension will permanently delete all associated data</li>
+            <li>You can clear all data through the Extension settings at any time</li>
         </ul>
+        <p>To delete analytics data tied to your anonymous ID, email <a href="mailto:contact@rememberbill.co">contact@rememberbill.co</a> with the ID shown in Settings → Privacy.</p>
         
         <h2>7. Security</h2>
         <p>While we've designed RememberBill with security in mind:</p>
         <ul>
-            <li>Your data's security depends partly on your browser's security and your device settings.</li>
-            <li>We recommend keeping your browser updated and using device security features like screen locks.</li>
-            <li>We don't have access to your data and cannot recover it if lost.</li>
+            <li>Your data's security depends partly on your browser's security and your device settings</li>
+            <li>We recommend keeping your browser updated and using device security features like screen locks</li>
+            <li>We don't have access to your data and cannot recover it if lost</li>
+            <li>All analytics events are sent via HTTPS with an ephemeral API secret; servers enforce least-privilege IAM and access controls</li>
         </ul>
         
         <h2>8. Children's Privacy</h2>
@@ -223,13 +236,15 @@
         
         <h2>9. Changes to This Policy</h2>
         <p>We may update this Privacy Policy occasionally to reflect changes in our practices or for other operational, legal, or regulatory reasons. When we make changes, we will update the "Last Updated" date at the top of this policy.</p>
+        <p>Major changes will be announced via an in-extension banner or release notes.</p>
         
         <h2>10. Contact Us</h2>
         <p>If you have questions or concerns about our privacy practices, please contact us at:</p>
-        <p><strong>privacy@rememberbill.app</strong></p>
+        <p>For inquiries: <a href="mailto:contact@rememberbill.co">contact@rememberbill.co</a><br>
+    
         
-        <a href="#" class="back-button">← Back to Homepage</a>
-    </main>
+            <a href="index.html" class="back-button">← Back to Homepage</a>
+        </main>
     
     <footer>
         <p>© 2025 RememberBill. All rights reserved.</p>
