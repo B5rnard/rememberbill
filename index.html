@@ -247,8 +247,8 @@
                     
 
                     <div class="bg-white rounded-xl shadow-2xl overflow-hidden relative max-w-[300px] sm:max-w-[360px] md:max-w-[420px] lg:max-w-[460px] xl:max-w-[500px] mx-auto">
-                        <img src="images/preview.jpg" alt="RememberBill App Interface" class="w-full h-auto">
-                        </div>
+                        <img src="demo.webp" alt="RememberBill App Demo" class="w-full h-auto">
+                    </div>
 
 
                 </div>
@@ -836,46 +836,170 @@
     </div>
 </section>
 
-<!-- Enhanced Footer with Brand Colors -->
+<!-- REPLACE YOUR EXISTING FOOTER WITH THIS -->
 <footer class="py-8 bg-[#06112A] text-[#AEBCF2]">
     <div class="container mx-auto px-4">
         <!-- Top Footer Content -->
-        <div class="flex flex-col md:flex-row justify-between items-center mb-6 gap-6">
-            <!-- Logo and Tagline -->
-            <div class="flex items-center gap-3">
-                <div class="w-8 h-8 bg-[#172E5E] rounded-full flex items-center justify-center">
-                    <img src="images/rb-logo.png" alt="RememberBill Logo" class="w-5 h-5">
+        <div class="grid md:grid-cols-2 gap-8 mb-6">
+            <!-- Left side: Logo and Info -->
+            <div>
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-[#172E5E] rounded-full flex items-center justify-center">
+                        <img src="images/rb-logo.png" alt="RememberBill Logo" class="w-5 h-5">
+                    </div>
+                    <div class="text-left">
+                        <div class="font-medium text-white">RememberBill</div>
+                    </div>
                 </div>
-                <div class="text-left">
-                    <div class="font-medium text-white">RememberBill</div>
-                </div>
+                
+                <p class="text-sm text-[#AEBCF2] mb-4 max-w-md">
+                    Bill tracking that just works. Stop juggling spreadsheets and mental notes. RememberBill simplifies everything.
+                </p>
             </div>
             
+            <!-- Right side: Email signup -->
+            <div>
+                <h4 class="text-white font-medium mb-3">Never Miss a Bill</h4>
+                <p class="text-sm text-[#AEBCF2] mb-3">Get early access + exclusive tips to stay on top of your finances.</p>
+                
+                <form id="emailSubscribeForm" class="flex flex-col sm:flex-row gap-2 mb-2">
+                    <input 
+                        type="email" 
+                        name="Email"
+                        id="subscriber-email"
+                        placeholder="Enter your email" 
+                        class="bg-[#0A1B3D] border border-[#172E5E] rounded-md px-3 py-2 text-white text-sm focus:outline-none focus:border-[#FAE302] w-full"
+                        required
+                    >
+                    <button 
+                        type="submit"
+                        id="submit-btn"
+                        class="bg-[#FAE302] hover:bg-[#CEB801] text-[#06112A] font-medium py-2 px-4 rounded-md transition-all duration-200 whitespace-nowrap text-sm"
+                    >
+                        Join Now
+                    </button>
+                </form>
+                
+                <!-- Toast message container -->
+                <div id="toast-container" class="fixed bottom-4 right-4 z-50" style="display: none;"></div>
+                
+                <p class="text-xs text-[#7894EA]">We respect your privacy. No spam, ever.</p>
+            </div>
+            
+            <script>
+                const form = document.getElementById('emailSubscribeForm');
+                const toastContainer = document.getElementById('toast-container');
+                
+                form.addEventListener('submit', e => {
+                  e.preventDefault();
+                  
+                  // Get the email value
+                  const emailInput = document.getElementById('subscriber-email');
+                  const email = emailInput.value;
+                  
+                  // Show loading state
+                  document.getElementById('submit-btn').innerHTML = 'Sending...';
+                  document.getElementById('submit-btn').disabled = true;
+                  
+                  // Create URL with parameters (avoids CORS preflight)
+                  const scriptURL = 'https://script.google.com/macros/s/AKfycbzDEt6AMrUGaBbzr7ObMnVxBqYTNrHAM4iRsDtWSv2Hz27cVJOufzxQi3j5903dTDPuRQ/exec';
+                  const finalURL = `${scriptURL}?Email=${encodeURIComponent(email)}`;
+                  
+                  // Use JSONP approach with iframe to avoid CORS
+                  const iframe = document.createElement('iframe');
+                  iframe.style.display = 'none';
+                  document.body.appendChild(iframe);
+                  iframe.src = finalURL;
+                  
+                  // Set a timeout to check for success 
+                  setTimeout(() => {
+                    // Reset the form
+                    form.reset();
+                    document.getElementById('submit-btn').innerHTML = 'Join Now';
+                    document.getElementById('submit-btn').disabled = false;
+                    
+                    // Show toast notification
+                    showToast('Success! You\'re on the list.', 'success');
+                    
+                    // Clean up iframe
+                    document.body.removeChild(iframe);
+                  }, 2000);
+                });
+                
+                // Toast notification function
+                function showToast(message, type) {
+                  // Create toast element
+                  const toast = document.createElement('div');
+                  toast.className = `flex items-center p-4 mb-4 rounded-lg shadow-lg transition-all transform translate-y-0 opacity-100 ${type === 'success' ? 'bg-[#172E5E] text-white' : 'bg-red-100 text-red-800'}`;
+                  
+                  // Set inner HTML with icon and text
+                  toast.innerHTML = `
+                    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 ${type === 'success' ? 'text-[#06112A] bg-[#FAE302]' : 'text-red-500 bg-red-100'} rounded-lg">
+                      ${type === 'success' ? 
+                        '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>' : 
+                        '<svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>'
+                      }
+                    </div>
+                    <div class="ml-3 text-sm font-medium">${message}</div>
+                    <button type="button" class="ml-auto -mx-1.5 -my-1.5 rounded-lg focus:ring-2 focus:ring-gray-300 p-1.5 inline-flex h-8 w-8 text-gray-400 hover:text-gray-900 dark:hover:text-white" data-dismiss-target="#toast-success" aria-label="Close">
+                        <span class="sr-only">Close</span>
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
+                    </button>
+                  `;
+                  
+                  // Add toast to container
+                  toastContainer.innerHTML = '';
+                  toastContainer.appendChild(toast);
+                  toastContainer.style.display = 'block';
+                  
+                  // Animate in
+                  setTimeout(() => {
+                    toast.classList.add('translate-y-0', 'opacity-100');
+                  }, 10);
+                  
+                  // Auto dismiss after 5 seconds
+                  setTimeout(() => {
+                    toast.classList.replace('translate-y-0', 'translate-y-full');
+                    toast.classList.replace('opacity-100', 'opacity-0');
+                    
+                    setTimeout(() => {
+                      toastContainer.style.display = 'none';
+                    }, 300);
+                  }, 5000);
+                  
+                  // Close button functionality
+                  toast.querySelector('button').addEventListener('click', () => {
+                    toast.classList.replace('translate-y-0', 'translate-y-full');
+                    toast.classList.replace('opacity-100', 'opacity-0');
+                    
+                    setTimeout(() => {
+                      toastContainer.style.display = 'none';
+                    }, 300);
+                  });
+                }
+            </script>
+        </div>
         
         <!-- Footer Divider -->
         <div class="h-px bg-gradient-to-r from-transparent via-[#AEBCF2] to-transparent opacity-20 my-6"></div>
         
         <!-- Bottom Footer -->
         <div class="flex flex-col md:flex-row justify-between items-center text-sm">
-
+            <span class="text-xs text-[#7894EA]">© 2025 RememberBill</span>
             
-            <div class="flex flex-col sm:flex-row gap-4 sm:gap-8 text-center sm:text-left">
-                <span class="text-xs text-[#7894EA]">© 2025 RememberBill</span>
-                
-                <div class="flex gap-6">
-                    <a href="privacy-policy.html" class="text-xs text-[#AEBCF2] hover:text-white transition duration-200 relative group">
-                        Privacy Policy
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FAE302] group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a href="terms-of-service.html" class="text-xs text-[#AEBCF2] hover:text-white transition duration-200 relative group">
-                        Terms of Service
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FAE302] group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                    <a href="contact.html" class="text-xs text-[#AEBCF2] hover:text-white transition duration-200 relative group">
-                        Contact / Feedback
-                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FAE302] group-hover:w-full transition-all duration-300"></span>
-                    </a>
-                </div>
+            <div class="flex gap-6 mt-4 md:mt-0">
+                <a href="privacy-policy.html" class="text-xs text-[#AEBCF2] hover:text-white transition duration-200 relative group">
+                    Privacy Policy
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FAE302] group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="terms-of-service.html" class="text-xs text-[#AEBCF2] hover:text-white transition duration-200 relative group">
+                    Terms of Service
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FAE302] group-hover:w-full transition-all duration-300"></span>
+                </a>
+                <a href="contact.html" class="text-xs text-[#AEBCF2] hover:text-white transition duration-200 relative group">
+                    Contact / Feedback
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-[#FAE302] group-hover:w-full transition-all duration-300"></span>
+                </a>
             </div>
         </div>
     </div>
